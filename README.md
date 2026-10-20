@@ -15,7 +15,7 @@ Built with PowerShell and WinForms. No installer, no admin rights, no dependenci
 - Idle detection: after 25 minutes without keyboard or mouse input the running session is closed at the moment you stopped, and the widget shows "auto-paused". It looks at input only and does not watch for sleep or screen lock, so stop the timer when you leave for the day.
 - Global hotkeys: Ctrl+Alt+Shift+9 starts or stops, Ctrl+Alt+Shift+1 to 5 switch project.
 - Analytics window with hours per project per day for the current week and every past week, plus the difference to plan.
-- Crash recovery: a heartbeat is written every 60 seconds, so a session that was cut short is closed at the last heartbeat on the next start.
+- Crash recovery: a heartbeat is written every 60 seconds. If the widget restarts and the last heartbeat is less than 3 minutes old, the running session simply continues. If it is older, for example after a crash found later, the session is closed at the last heartbeat.
 - Sits below all windows, has no taskbar button, never takes focus, and remembers its position.
 - The full history is a plain text file, one JSON line per work segment.
 
@@ -35,10 +35,10 @@ To update, run `uninstall.bat`, replace the files with the new version, and run 
 ![Paused: grey knob, play triangle, and the hours logged today under the project name](docs/state-paused.png)
 
 - **Click the knob** to start or stop the active project.
-- **Click a number around the knob, or anywhere on a project row**, to switch project. While recording, the running session is closed and a new one starts on the project you picked. Clicking the row that is recording stops it.
+- **Click a number around the knob, or anywhere on a project row**, to switch project. While recording, the running session is closed and a new one starts on the project you picked. While paused, the click switches to that project and starts the timer on it. Clicking the row that is recording stops it.
 - **Mouse wheel over the widget** steps through the projects. While recording it moves the recording to the next project, while paused it only moves the selection. This needs the Windows setting "Scroll inactive windows when I hover over them" (on by default).
 - **Drag** anywhere to move the widget. The position is saved.
-- **Hotkeys:** Ctrl+Alt+Shift+9 starts or stops the active project, Ctrl+Alt+Shift+1 to 5 switch to project 1 to 5 (pressing the key of the recording project stops it).
+- **Hotkeys:** Ctrl+Alt+Shift+9 starts or stops the active project, Ctrl+Alt+Shift+1 to 5 switch to project 1 to 5 and, while paused, start the timer on it (pressing the key of the recording project stops it).
 - **Right-click** opens the menu for the active project: Analytics and history, Rename project, Plan hours, Add project, Remove this project, Undo last session, Close widget. The first line of the menu shows the project, its position, and hours against plan, for example `Product  (2/5)  ·  6.1/10 h`.
 
 Under the knob the widget shows the project name and a status: `recording`, `paused`, `auto-paused`, or `today 4.4 h` when it is paused and you have logged time today.
@@ -52,6 +52,8 @@ All bars share one scale: the largest plan times 4/3, rounded up to a multiple o
 Right-click, then Analytics and history. The table lists hours per project and day, the weekly actual, the plan, and the difference. `< Prev` and `Next >` move between weeks.
 
 ## Configuration and where data lives
+
+The app calls itself WorkTracker: the window, its dialogs, the Startup shortcut and the data folder all use that name, while this repository is called time-tracker-widget.
 
 Everything is stored in `%APPDATA%\WorkTracker\`, never in the program folder:
 
