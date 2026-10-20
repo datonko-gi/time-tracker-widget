@@ -1,0 +1,9 @@
+# Runtime state lives in %APPDATA%\WorkTracker, never in the repo
+data.json
+sessions.jsonl
+*.log
+
+# Backups and OS cruft
+*.bak*
+Thumbs.db
+desktop.ini

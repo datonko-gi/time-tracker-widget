@@ -1,0 +1,28 @@
+{
+  "repo": "datonko-gi/time-tracker-widget",
+  "description": "Time tracker widget for Windows 10 and 11: project time tracking and weekly plan vs actual hours on your desktop. One click or a global hotkey starts the timer, idle detection pauses it, analytics show hours per day. Pure PowerShell, no install, no admin, no network.",
+  "topics": [
+    "time-tracker",
+    "time-tracking",
+    "timesheet",
+    "work-hours",
+    "hours-tracker",
+    "weekly-planner",
+    "project-tracking",
+    "productivity",
+    "freelancer",
+    "idle-detection",
+    "global-hotkeys",
+    "desktop-widget",
+    "widget",
+    "windows",
+    "windows-11",
+    "windows-10",
+    "powershell",
+    "winforms"
+  ],
+  "release_tag": "v1.0.0",
+  "release_title": "Time Tracker Widget v1.0.0",
+  "release_notes": "First public release of the time tracker widget for Windows 10 and 11.\n\n- One knob starts and stops the timer for the active project; up to 5 projects.\n- Weekly plan vs actual bars per project, default plan 40 h (Client work 15, Product 10, Learning 5, Admin 5, Other 5).\n- Idle detection: auto-pause after 25 minutes without input.\n- Global hotkeys: Ctrl+Alt+Shift+9 start or stop, Ctrl+Alt+Shift+1 to 5 switch project.\n- Analytics window with hours per project per day, current and past weeks.\n- Crash recovery with a 60 second heartbeat. Data stays in %APPDATA%\\WorkTracker, nothing is sent anywhere.\n\nInstall: unzip, run install.bat. Windows PowerShell 5.1 (built in), no admin rights.",
+  "release_zip": "time-tracker-widget-v1.0.0.zip"
+}
